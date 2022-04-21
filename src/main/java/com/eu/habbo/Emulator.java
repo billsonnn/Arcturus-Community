@@ -117,7 +117,7 @@ public final class Emulator {
                 System.out.println();
                 promptEnterKey();
             }
-
+            LOGGER.info("eek. Has it really been a year?");
             LOGGER.info("This project is for educational purposes only. This Emulator is an open-source fork of Arcturus created by TheGeneral.");
             LOGGER.info("Version: {}", version);
             LOGGER.info("Build: {}", build);
