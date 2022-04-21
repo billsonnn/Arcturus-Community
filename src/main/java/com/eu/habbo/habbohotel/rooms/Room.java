@@ -4522,8 +4522,8 @@ public class Room implements Comparable<Room>, ISerialize, Runnable {
 
         THashSet<RoomTile> occupiedTiles = this.layout.getTilesAt(tile, item.getBaseItem().getWidth(), item.getBaseItem().getLength(), rotation);
         for (RoomTile t : occupiedTiles) {
-            if (t.state == RoomTileState.INVALID) return FurnitureMovementError.INVALID_MOVE;
-            if (!Emulator.getConfig().getBoolean("wired.place.under", false) || (Emulator.getConfig().getBoolean("wired.place.under", false) && !item.isWalkable() && !item.getBaseItem().allowSit())) {
+            if(t.state == RoomTileState.INVALID) return FurnitureMovementError.INVALID_MOVE;
+            if(!Emulator.getConfig().getBoolean("wired.place.under", false) || (Emulator.getConfig().getBoolean("wired.place.under", false) && !item.isWalkable() && !item.getBaseItem().allowSit() && !item.getBaseItem().allowLay())) {
                 if (checkForUnits && this.hasHabbosAt(t.x, t.y)) return FurnitureMovementError.TILE_HAS_HABBOS;
                 if (checkForUnits && this.hasBotsAt(t.x, t.y)) return FurnitureMovementError.TILE_HAS_BOTS;
                 if (checkForUnits && this.hasPetsAt(t.x, t.y)) return FurnitureMovementError.TILE_HAS_PETS;
@@ -4676,7 +4676,7 @@ public class Room implements Comparable<Room>, ISerialize, Runnable {
                     if ((!magicTile && ((tileTopItem != null && tileTopItem != item ? (t.state.equals(RoomTileState.INVALID) || !t.getAllowStack() || !tileTopItem.getBaseItem().allowStack() || (tileTopItem.getBaseItem().getInteractionType().getType() == InteractionWater.class && item.getBaseItem().getInteractionType().getType() == InteractionWater.class || item.getBaseItem().getInteractionType().getType() != InteractionWaterItem.class)) : this.calculateTileState(t, item).equals(RoomTileState.INVALID))) || stackHelper.isPresent() && item.getBaseItem().getInteractionType().getType() == InteractionWater.class))
                         return FurnitureMovementError.CANT_STACK;
 
-                    if (!Emulator.getConfig().getBoolean("wired.place.under", false) || (Emulator.getConfig().getBoolean("wired.place.under", false) && !item.isWalkable() && !item.getBaseItem().allowSit())) {
+                    if(!Emulator.getConfig().getBoolean("wired.place.under", false) || (Emulator.getConfig().getBoolean("wired.place.under", false) && !item.isWalkable() && !item.getBaseItem().allowSit())) {
                         if (checkForUnits) {
                             if (!magicTile && this.hasHabbosAt(t.x, t.y)) return FurnitureMovementError.TILE_HAS_HABBOS;
                             if (!magicTile && this.hasBotsAt(t.x, t.y)) return FurnitureMovementError.TILE_HAS_BOTS;
@@ -4737,6 +4737,9 @@ public class Room implements Comparable<Room>, ISerialize, Runnable {
             }
         }
 
+        if(height > MAXIMUM_FURNI_HEIGHT) return FurnitureMovementError.CANT_STACK;
+        if(height < this.getLayout().getHeightAtSquare(tile.x, tile.y)) return FurnitureMovementError.CANT_STACK; //prevent furni going under the floor
+
         if (Emulator.getPluginManager().isRegistered(FurnitureBuildheightEvent.class, true)) {
             FurnitureBuildheightEvent event = Emulator.getPluginManager().fireEvent(new FurnitureBuildheightEvent(item, actor, 0.00, height));
             if (event.hasChangedHeight()) {
@@ -4744,9 +4747,8 @@ public class Room implements Comparable<Room>, ISerialize, Runnable {
             }
         }
 
-        if (height > MAXIMUM_FURNI_HEIGHT) return FurnitureMovementError.CANT_STACK;
-        if (height < this.getLayout().getHeightAtSquare(tile.x, tile.y))
-            return FurnitureMovementError.CANT_STACK; //prevent furni going under the floor
+        if(height > MAXIMUM_FURNI_HEIGHT) return FurnitureMovementError.CANT_STACK;
+        if(height < this.getLayout().getHeightAtSquare(tile.x, tile.y)) return FurnitureMovementError.CANT_STACK; //prevent furni going under the floor
 
         item.setX(tile.x);
         item.setY(tile.y);
