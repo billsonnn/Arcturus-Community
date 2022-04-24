@@ -471,7 +471,7 @@ public class Outgoing {
     public final static int YouAreNotControllerMessageComposer = 2392;
     public final static int YouAreOwnerMessageComposer = 339;
     public final static int YouArePlayingGameMessageComposer = 448;
-    public final static int YouAreSpectatorMessageEvent = 1033;
+    public final static int YouAreSpectatorMessageComposer = 1033;
     public final static int YoutubeControlVideoMessageComposer = 1554;
     public final static int YoutubeDisplayPlaylistsComposer = 1112;
     public final static int YoutubeDisplayVideoMessageComposer = 1411;
