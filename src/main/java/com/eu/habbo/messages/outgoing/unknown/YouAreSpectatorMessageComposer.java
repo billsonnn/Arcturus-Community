@@ -4,10 +4,10 @@ import com.eu.habbo.messages.ServerMessage;
 import com.eu.habbo.messages.outgoing.MessageComposer;
 import com.eu.habbo.messages.outgoing.Outgoing;
 
-public class YouAreSpectatorMessageComposer extends MessageComposer {
+public class YouAreSpectatorMessageEvent extends MessageComposer {
     @Override
     protected ServerMessage composeInternal() {
-        this.response.init(Outgoing.YouAreSpectatorMessageComposer);
+        this.response.init(Outgoing.youAreSpectatorMessageEvent);
         //Empty body
         return this.response;
     }
