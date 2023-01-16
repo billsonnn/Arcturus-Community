@@ -5,9 +5,9 @@ Arcturus Morningstar is as a fork of Arcturus Emulator by TheGeneral. Arcturus M
 
 | Flash | Community Clients |
 | ------------- | ------------- |
-| [PRODUCTION-201611291003-338511768](https://git.krews.org/morningstar/apollyon/uploads/dc669a26613bf2356e48eb653734ab29/patched-habbo.swf) | [Nitro (Recommended)*](https://git.krews.org/nitro) |
+| [PRODUCTION-201611291003-338511768](https://git.krews.org/morningstar/apollyon/uploads/dc669a26613bf2356e48eb653734ab29/patched-habbo.swf) | [Nitro (Recommended)*](https://github.com/billsonnn/nitro-react) |
  
-###### *Note to use Nitro you will need to use the following [plugin](https://git.krews.org/nitro/ms-websockets/-/releases) with Arcturus Morningstar #######
+###### *Note to use Nitro you will need to use the following [plugin](https://github.com/dank074/ms-websockets) with Arcturus Morningstar #######
 
 
 
@@ -20,9 +20,9 @@ Arcturus Morningstar is as a fork of Arcturus Emulator by TheGeneral. Arcturus M
 
 [![image](https://img.shields.io/badge/DEVELOPER%20BUILDS-4.0-red.svg?style=for-the-badge&logo=appveyor)](https://git.krews.org/morningstar/Arcturus-Community/-/jobs) *
 
-[![image](https://img.shields.io/badge/RECOMMENDED%20PLUGINS-blue.svg?style=for-the-badge&logo=)](https://git.krews.org/official-plugins) 
+[![image](https://img.shields.io/badge/RECOMMENDED%20PLUGINS-blue.svg?style=for-the-badge&logo=)](https://git.krews.org/morningstar/archive) 
 
-###### * Note to use these builds you will need to run any database updates from [here](https://git.krews.org/morningstar/Arcturus-Community/-/tree/dev/sqlupdates) #######
+###### * Note to use these builds you will need to run any database updates from [here] (https://git.krews.org/morningstar/Arcturus-Community/-/tree/dev/sqlupdates) #######
 
 
 ### Branches ###
@@ -31,7 +31,7 @@ There are two main branches in use on the Arcturus Morningstar git. Below the pr
 | master | Tested on a production hotel and is stable for every day use with no known serious exploits. |
 | ------------- | ------------- |
 
-| dev | The most up-to-date, but features may not work as intended. |
+| dev | The most up-to-date, but features may not work as intended. Use at your own risk. |
 | ------------- | ------------- |
 
 
